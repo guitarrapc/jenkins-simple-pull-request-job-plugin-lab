@@ -1,19 +1,20 @@
 agent: any
 
+stages:
+    - name: First
+      agent: any
+      steps:
+        - sh: "./scripts/hello.sh"
+    - name: Build
+      agent: any
+      steps:
+        - sh: "./scripts/build.sh"
+    - name: Tests
+      agent: any
+      steps:
+        - sh: "./scripts/test.sh"
+
 configuration:
-  pushPrOnSuccess: true
-
-environment:
-  variables:
-    variable_1: value_1
-    variable_2: value_2
-
-steps:
-  - sh: "scripts/hello"
-  - sh: "scripts/hello"
-  - sh:
-      script: "scripts/hello"
-
-configuration:
-  archiveArtifacts:
-    - Jenkinsfile.yaml
+    archiveArtifacts:
+        - Jenkinsfile.yaml
+        - scripts/hello.sh
