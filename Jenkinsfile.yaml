@@ -1,0 +1,24 @@
+agent:
+  dockerImage: 'mcr.microsoft.com/dotnet/core/sdk:3.1-buster'
+
+stages:
+  - name: PreBuild
+    steps:
+      - sh: 'echo prebuild'
+      - sh: 'echo prebuild2'
+      - sh: 'echo prebuild3'
+  - name: Build
+    steps:
+      - sh: "dotnet restore src/Sample.csproj"
+      - sh: "dotnet build src/Sample.csproj"
+      - sh: "dotnet publish src/Sample.csproj"
+  - name: Tests
+    steps:
+      - sh: 'echo Tests'
+
+archiveArtifacts:
+    - Jenkinsfile.yaml
+
+publishArtifacts:
+    - from: Jenkinsfile.yaml
+      to: ~/archives
