@@ -13,3 +13,7 @@ steps:
   - sh: "scripts/hello"
   - sh:
       script: "scripts/hello"
+
+configuration:
+  archiveArtifacts:
+    - Jenkinsfile.yaml
