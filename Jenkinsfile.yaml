@@ -1,19 +1,15 @@
-agent:
-  dockerImage: 'mcr.microsoft.com/dotnet/core/sdk:3.1-buster'
+agent: any
 
-stages:
-  - name: PreBuild
-    steps:
-      - sh: 'echo prebuild'
-      - sh: 'echo prebuild2'
-      - sh: 'echo prebuild3'
-  - name: Build
-    steps:
-      - sh: "dotnet restore src/Sample.csproj"
-      - sh: "dotnet build src/Sample.csproj"
-      - sh: "dotnet publish src/Sample.csproj"
-  - name: Tests
-    steps:
-      - sh: 'echo Tests'
-      - sh: 'echo Tests2'
+configuration:
+  pushPrOnSuccess: true
 
+environment:
+  variables:
+    variable_1: value_1
+    variable_2: value_2
+
+steps:
+  - sh: "scripts/hello"
+  - sh: "scripts/hello"
+  - sh:
+      script: "scripts/hello"
