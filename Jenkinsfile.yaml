@@ -14,6 +14,6 @@ steps:
   - sh:
       script: "scripts/hello"
 
-archiveArtifactStage:
+configuration:
   archiveArtifacts:
     - Jenkinsfile.yaml
